@@ -1,3 +1,6 @@
+## 感谢
+[Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
+
 # nicemusic
 
 ## Project setup

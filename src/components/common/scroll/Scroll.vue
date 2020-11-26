@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" ref="wrapper">
-    <div class="content">
+    <div>
       <slot></slot>
     </div>
   </div>
@@ -30,13 +30,15 @@
       this.scroll.on('scroll', (position) => {
         this.$emit('scroll', position)
       })
+      // console.log(this.scroll)
     },
     methods: {
       scrollTo(start, end, time) {
-        this.scroll.scrollTo(start, end, time)
+        this.scroll && this.scroll.scrollTo(start, end, time)
       },
       refresh() {
-        this.scroll.refresh()
+        // console.log('-----')
+        this.scroll && this.scroll.refresh()
       }
     }
   }

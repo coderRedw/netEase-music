@@ -1,16 +1,23 @@
 <template>
   <div class="main">
     <div v-for="(item, index) in store" class="main-box" @click="itemClick(index)">
-      <img :src="item.picUrl" alt="" @load="mainLoad">
+      <img :src="item.picUrl" alt="" @load="imgLoad">
       <span class="title">{{item.name}}</span>
-      <i class="listen" >{{(item.playCount / 10000).toFixed(2) + '万'}}</i>
+      <play-count>
+        <i class="listen" >{{(item.playCount / 10000).toFixed(2) + '万'}}</i>
+      </play-count>
     </div>
   </div>
 </template>
 
 <script>
+  import PlayCount from "components/common/playCount/PlayCount";
+
   export default {
     name: "MusicBox",
+    components: {
+      PlayCount
+    },
     props: {
       store: {
         type: Array,
@@ -20,8 +27,8 @@
       }
     },
     methods: {
-      mainLoad() {
-        this.$emit('mainLoad')
+      imgLoad() {
+        this.$emit('imgLoad')
       },
       itemClick(index) {
         this.$router.push('/detail/'+ this.store[index].id)
@@ -38,7 +45,8 @@
   .main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    width: 100%;
   }
   .main img {
     width: 100%;
@@ -55,12 +63,5 @@
     width: 100%;
 
     font-size: 12px;
-  }
-  .listen {
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: #fff;
-    font-size: 10px;
   }
 </style>

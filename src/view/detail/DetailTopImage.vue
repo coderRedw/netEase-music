@@ -4,35 +4,64 @@
       <div class="top-img">
         <img v-if="topImage" :src="topImage.coverImgUrl" alt="">
         <span class="play-list">歌单</span>
+
+        <play-count>
+          <i>{{(play / 1000).toFixed(2) + '万'}}</i>
+        </play-count>
+
       </div>
       <div v-if="topImage">
         <div class="img-title">{{topImage.name}}</div>
       </div>
       <div class="author">
-        <div class="author-img" v-if="topImage.creator.avatarUrl">
-          <img :src="topImage.creator.avatarUrl" alt="">
+        <div class="author-img" v-if="author">
+          <img :src="author.avatarUrl" alt="">
         </div>
-        <span v-if="topImage.creator.nickname">
-          <span class="author-title">{{topImage.creator.nickname}}</span>
+        <span v-if="author">
+          <span class="author-title">{{author.nickname}}</span>
         </span>
-        <div v-if="topImage.creator.avatarDetail">
-          <img class="author-sign" :src="topImage.creator.avatarDetail.identityIconUrl" alt="">
+        <div v-if="isSign">
+          <img class="author-sign" :src="author.avatarDetail.identityIconUrl" alt="">
         </div>
-
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import PlayCount from "components/common/playCount/PlayCount";
+
   export default {
     name: "DetailTopImage",
+    components:{
+      PlayCount
+    },
     props: {
       topImage: {
         type: Object,
         default() {
           return {}
         }
+      },
+      author: {
+        type: Object,
+        default() {
+          return {};
+        }
+      },
+      play: {
+        type: Number,
+        default: 0
+      }
+    },
+    data() {
+      return {
+        isShow: false
+      }
+    },
+    computed: {
+      isSign() {
+        return this.avatarDetail == null ? false : true
       }
     }
   }
@@ -104,8 +133,8 @@
   }
   .author-sign {
     position: relative;
-    right: 10px;
-    bottom: 0;
+    right: -30px;
+    bottom: 18px;
     width: 10px;
     height: 10px;
   }

@@ -8,6 +8,10 @@
 <script>
   export default {
     name: "DownLoad",
+    data() {
+      return {
+      }
+    },
     methods: {
       openApp() {
         console.log('openApp')
@@ -24,7 +28,7 @@
     right: 0;
 
     height: 80px;
-    background: url("~assets/img/recommand.png");
+    background: url("~assets/img/recommand.png") no-repeat;
     text-align: center;
   }
   .main-title {

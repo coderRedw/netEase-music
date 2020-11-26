@@ -1,5 +1,6 @@
 import {request} from "./index";
 
+//获取歌单地址
 export function getMusicDetail(id) {
   return request({
     url: '/playlist/detail',
@@ -9,6 +10,7 @@ export function getMusicDetail(id) {
   })
 }
 
+//获取歌曲播放地址
 export function getMusicDetailPlay(id) {
   return request({
     url: 'song/url',
@@ -17,3 +19,16 @@ export function getMusicDetailPlay(id) {
     }
   })
 }
+
+//获取歌单评论地址
+export function getDetailComment(id) {
+  return request({
+    url: '/comment/playlist',
+    params: {
+      id
+    }
+  })
+}
+
+
+

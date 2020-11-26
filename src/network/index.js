@@ -4,7 +4,7 @@ export function request(config) {
   //1.创建axios实例
   const instance = axios.create({
     baseURL: 'https://nicemusic-api.lxhcool.cn/',
-    timeout: 10000
+    timeout: 1000
   })
 
   //2.axios的拦截器

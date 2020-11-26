@@ -5,7 +5,7 @@ const Home = () => import("../view/home/Home")
 const Hot = () => import("../view/hot/Hot")
 const Search = () => import("../view/search/Search")
 const Detail = () => import("../view/detail/Detail")
-const DetailMusicPlay = () => import("../view/detail/DetailMusicPlay")
+const MusicPlay = () => import("../components/common/musicPlay/MusicPlay")
 
 
 Vue.use(VueRouter)
@@ -33,7 +33,7 @@ const routes = [
   },
   {
     path: '/play/:id',
-    component: DetailMusicPlay
+    component: MusicPlay
   }
 ]
 

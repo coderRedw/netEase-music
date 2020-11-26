@@ -2,7 +2,9 @@
   <div id="app">
     <top-app/>
     <main-tab-bar/>
+    <keep-alive exclude="Detail,MusicPlay">
       <router-view/>
+    </keep-alive>
     <down-load/>
   </div>
 </template>

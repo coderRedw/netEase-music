@@ -14,7 +14,10 @@
     name: "TopApp",
     data() {
       return {
+
       }
+    },
+    computed: {
     }
   }
 </script>
@@ -23,9 +26,10 @@
   #top-app {
     position: relative;
     height: 80px;
-    width: 100%;
+    /*width: 100%;*/
     color: #fff;
     background-color: var(--color-anothor);
+    font: 14px/1.5 Helvetica,sans-serif,STHeiTi;
   }
   .title {
     position: relative;

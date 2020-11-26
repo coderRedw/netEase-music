@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <detail-music-tab>
-      <div>歌曲列表</div>
-    </detail-music-tab>
+  <div class="detail-music">
     <div v-for="(item, index) in song" class="music-main">
       <div class="music-item" @click="musicClick(index)">
         <span class="music-item-index">{{index + 1}}</span>
@@ -15,15 +12,11 @@
 </template>
 
 <script>
-  import DetailMusicTab from "components/content/detaiMusicTab/DetailMusicTab";
   import Play from "./Play";
-
-  import {getMusicDetailPlay} from "network/deatil";
 
   export default {
     name: "DetailMusic",
     components: {
-      DetailMusicTab,
       Play
     },
     props: {
@@ -32,6 +25,10 @@
         default() {
           return []
         }
+      },
+      songName: {
+        type: String,
+        default: ''
       }
     },
     data() {
@@ -45,6 +42,9 @@
         this.$router.push('/play/' + this.song[index].id)
         this.songId = this.song[index].id
       }
+    },
+    created() {
+      this.$bus.$emit('songName',this.songName)
     }
   }
 </script>
@@ -52,6 +52,7 @@
 <style scoped>
   .music-main {
     position: relative;
+    overflow: hidden;
   }
 
   .music-item {

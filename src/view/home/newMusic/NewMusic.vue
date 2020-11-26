@@ -3,7 +3,7 @@
     <top-title>
       <span>最新音乐</span>
     </top-title>
-    <div v-for="item in newMusic" class="main">
+    <div v-for="(item, index) in newMusic" class="main" @click="itemClick(index)">
       <span class="song">{{item.name}}</span>
       <span v-if="item.song.alias[0]">
         <span class="song-anther">{{'(' + item.song.alias[0] + ')'}}</span>
@@ -28,9 +28,16 @@
         default() {
           return [];
         }
+      },
+      id: {
+        type: Number,
+        default: 0
       }
     },
     methods: {
+      itemClick(index) {
+        this.$router.push('/play/' + this.newMusic[index].id)
+      }
     }
   }
 </script>

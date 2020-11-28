@@ -8,12 +8,11 @@
         <play-count>
           <i>{{(play / 1000).toFixed(2) + '万'}}</i>
         </play-count>
-
       </div>
-      <div v-if="topImage">
-        <div class="img-title">{{topImage.name}}</div>
+      <div v-if="topImage" class="img-title">
+        <div>{{topImage.name}}</div>
       </div>
-      <div class="author">
+      <div class="author" @click="authorClick">
         <div class="author-img" v-if="author">
           <img :src="author.avatarUrl" alt="">
         </div>
@@ -25,6 +24,7 @@
         </div>
       </div>
     </div>
+    <span class="developing">收藏，关注等功能开发中</span>
   </div>
 </template>
 
@@ -52,6 +52,14 @@
       play: {
         type: Number,
         default: 0
+      },
+      userImg: {
+        type: String,
+        default: ''
+      },
+      userId: {
+        type: Number,
+        default: 0
       }
     },
     data() {
@@ -63,14 +71,27 @@
       isSign() {
         return this.avatarDetail == null ? false : true
       }
+    },
+    methods: {
+      authorClick() {
+        this.$router.push('/userPlayList/' + this.userId)
+      }
     }
   }
 </script>
 
 <style scoped>
+  .developing {
+    position: absolute;
+    right: 3%;
+    top: 5%;
+    color: green;
+    font-size: 20px;
+    font-weight: 700;
+  }
   .top {
     width: 100%;
-    height: 147px;
+    height: 187px;
   }
   .top-img {
     position: relative;

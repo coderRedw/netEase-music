@@ -14,7 +14,7 @@
     },
     methods: {
       openApp() {
-        console.log('openApp')
+        this.$router.push('/downLoadApp')
       }
     }
   }

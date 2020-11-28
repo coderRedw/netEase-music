@@ -33,7 +33,6 @@
 
 <style scoped>
   .hot-top-image {
-    width: 100%;
     height: 150px;
     padding-top: 20px;
 

@@ -3,6 +3,7 @@
     <music-lyric :iid="playId"/>
     <div class="developing">相关功能开发中</div>
   <audio :src="playUrl" controls class="audio"></audio>
+  <back-step/>
 </div>
 
 </template>
@@ -12,13 +13,15 @@
 
   import MusicLyric from "./MusicLyric";
   import Scroll from "../scroll/Scroll";
+  import BackStep from "../backStep/BackStep";
 
 
   export default {
     name: "MusicPlay",
     components: {
       MusicLyric,
-      Scroll
+      Scroll,
+      BackStep
     },
     data() {
       return {

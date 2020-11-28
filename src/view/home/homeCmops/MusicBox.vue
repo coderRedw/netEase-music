@@ -4,6 +4,7 @@
       <img :src="item.picUrl" alt="" @load="imgLoad">
       <span class="title">{{item.name}}</span>
       <play-count>
+<!--        (item.playCount / 10000).toFixed(2) + '万'-->
         <i class="listen" >{{(item.playCount / 10000).toFixed(2) + '万'}}</i>
       </play-count>
     </div>
@@ -25,6 +26,17 @@
           return []
         }
       }
+    },
+    computed: {
+      // contain() {
+      //   if (this.store.playCount <= 1000) {
+      //     return this.store.playCount
+      //   }else if (this.store.playCount >= 10000) {
+      //     return  (this.store.playCount / 10000).toFixed(2) + '万'
+      //   } else  {
+      //     return  (this.store.playCount / 10000).toFixed(2) + '亿'
+      //   }
+      // }
     },
     methods: {
       imgLoad() {

@@ -14,7 +14,7 @@
   .play {
     position: absolute;
     right: 40px;
-    top: 0;
+    top: 13px;
     width: 20px;
     height: 20px;
     border: 1px solid #cccccc;

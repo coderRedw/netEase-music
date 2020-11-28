@@ -30,5 +30,14 @@ export function getDetailComment(id) {
   })
 }
 
+//获取用户歌单
+export function getUserPlaylist(uid) {
+  return request({
+    url: '/user/playlist',
+    params: {
+      uid
+    }
+  })
+}
 
 

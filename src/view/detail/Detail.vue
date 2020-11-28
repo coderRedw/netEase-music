@@ -1,12 +1,19 @@
 <template>
   <div class="detail">
-    <detail-top-image :top-image="topImage" :author="author" :play="play"/>
-    <detail-music-tab>
-      <div>歌曲列表</div>
-    </detail-music-tab>
-    <detail-music :song="song" :song-name="songName"/>
-    <detail-comment :comments="comments" :hot-comments="hotComments"/>
+      <detail-top-image
+        :top-image="topImage"
+        :author="author"
+        :play="play"
+        :user-img="userImg"
+        :user-id="userId"/>
+      <detail-music-tab>
+        <div>歌曲列表</div>
+      </detail-music-tab>
+
+      <detail-music :song="song" :song-name="songName"/>
+      <detail-comment :comments="comments" :hot-comments="hotComments"/>
     <down-load-more/>
+    <back-step/>
   </div>
 </template>
 
@@ -19,6 +26,7 @@
 
   import DetailMusicTab from "components/content/detaiMusicTab/DetailMusicTab";
   import DownLoadMore from "components/common/downLoadMore/DownLoadMore";
+  import BackStep from "components/common/backStep/BackStep";
 
   export default {
     name: "Detail",
@@ -27,11 +35,13 @@
       DetailMusic,
       DetailComment,
       DetailMusicTab,
-      DownLoadMore
+      DownLoadMore,
+      BackStep
     },
     data() {
       return {
         id: null,
+        userId: null,
         topImage: null,
         song: null,
         scroll: null,
@@ -39,7 +49,8 @@
         comments: [],
         hotComments: [],
         songName: null,
-        play: null
+        play: null,
+        userImg: null
       }
     },
     created() {
@@ -65,6 +76,12 @@
 
         //5.请求播放次数
         this.play = res.playlist.playCount
+
+        //6.获取用户id
+        this.userId = res.playlist.userId
+
+        //7.请求用户头像
+        this.userImg = res.playlist.coverImgUrl
       })
       //3.获取评论数据
       getDetailComment(this.id).then(res => {
@@ -87,6 +104,10 @@
     background-color: #fff;
     height: 100%;
   }
+  /*.content {*/
+  /*  height: calc(100vh - 237px);*/
+  /*  overflow: hidden;*/
+  /*}*/
   /*.content {*/
   /*  position: absolute;*/
   /*  top: 170px;*/

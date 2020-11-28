@@ -1,10 +1,11 @@
 <template>
-  <div id="top-app">
+  <div id="top-app" v-show="isShow">
     <div class="title">
       <span>网易云音乐</span>
     </div>
     <div class="app">
-      <span class="app-title">下载APP</span>
+      <span class="app-title"><a href="https://music.163.com/m/download?dl=%2F%2Fmusic.163.com%2Fapi%2Fpackage%2Fdownload%2Fdeeplink
+">下载APP</a></span>
     </div>
   </div>
 </template>
@@ -14,10 +15,17 @@
     name: "TopApp",
     data() {
       return {
-
+        isShow: true
       }
     },
-    computed: {
+    created() {
+      this.$bus.$on('isShowTopApp',(n) => {
+        this.isShow = n
+      })
+
+      this.$bus.$on('showTopApp' ,(n) => {
+        this.isShow = n
+      })
     }
   }
 </script>

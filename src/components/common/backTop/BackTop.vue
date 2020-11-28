@@ -15,13 +15,14 @@
     position: fixed;
     right: 50px;
     bottom: 100px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--color-tint);
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--color-tint);
     border-radius: 50%;
 
     color: #000;
     text-align: center;
-    line-height: 28px;
+    line-height: 40px;
+    font-size: 25px;
   }
 </style>
